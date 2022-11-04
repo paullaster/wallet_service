@@ -1,0 +1,29 @@
+{
+  "name": "wallet_service",
+  "version": "1.0.0",
+  "description": "This is wallet service api built in nodejs",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "jest "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paullaster/wallet_service.git"
+  },
+  "keywords": [
+    "wallet-service",
+    "NodeJs",
+    "API"
+  ],
+  "author": "Paullaster Okoth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paullaster/wallet_service/issues"
+  },
+  "homepage": "https://github.com/paullaster/wallet_service#readme",
+  "devDependencies": {
+    "jest": "^29.2.2"
+  }
+}
