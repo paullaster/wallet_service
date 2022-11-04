@@ -2,7 +2,7 @@
 //Importing Configuration
 require ('dotenv').config ();
 const option = {
-    client: 'msql',
+    client: 'msql2',
     version: '8.0',
     connection: {
         host: process.env.DB_HOST,
@@ -14,4 +14,6 @@ const option = {
 };
 
 // Import knex
-const knex = require ( 'knex')(option)
+const knex = require ( 'knex')(option);
+//Export knex
+module.exports = knex;
