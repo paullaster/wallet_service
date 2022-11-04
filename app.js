@@ -9,6 +9,7 @@ require ( 'dotenv').config ();
 
 
 //IMPORTING INTERNAL MODULES
+const routes = require('./routes/index');
 
 //APPLICATION INSTANCE
 const app = express ();
@@ -21,7 +22,7 @@ app.use ( cors ())
 
 
 //API
-//app.use ( '/api', );
+app.use ( '/api', routes);
 
 //LAUNCHING SERVER
 app.listen (process.env.PORT, () => {
