@@ -25,14 +25,34 @@ const createAccount = ( req, res, next) => {
     };
     bcrypt.hash ( pin, 12)
     .then ( (hashedPin) => {
-        res
-        .status (200)
-        .json ( {phonenumber, hashedPin, })
+        let newAccount = [
+            {
+                accountID: phonenumber,
+                pin: hashedPin,
+                balance: 0
+            },
+        ];
+        knex('accounts').insert ( newAccount)
+        .then ( ( result) => {
+            res
+            .status (200)
+            .json ( result)
+            })
+            .catch ( (err) => {
+                res
+                .status (500)
+                .json (err.message);
+            })
+            //.finally ( () => knex.destroy ());
+    })
+    .catch ( (err) => {
+        apiError.InternalServerError (err.message)
     })
   })
   .catch ( (err) => {
     res.json (err.message)
   })
+  //.finally ( () => knex.destroy ())
 //   let account = [
 //     {
 //         accountID: phonenumber,
