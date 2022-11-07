@@ -3,14 +3,10 @@
 const route = require ( 'express').Router ();
 
 //IMPORT INTERNAL MODULES
-
+const authRoutes = require ( './auth/auth.routes');
 
 //ENDPOINTS
-route.get ( '/', (req, res) => {
-    res.json ( {
-        message: 'Hello from routes',
-    })
-});
+route.use ( '/auth', authRoutes)
 
 //EXPORTING ROUTES:
 module.exports = route;
