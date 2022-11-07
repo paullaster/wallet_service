@@ -8,7 +8,8 @@ require ( 'dotenv').config ();
 
 
 //IMPORTING INTERNAL MODULES
-const routes = require ( './routes/index')
+const routes = require ( './routes/index');
+const errorHandler = require ( './middleware/errors/errorHandler');
 
 //APPLICATION INSTANCE
 const app = express();
@@ -22,7 +23,8 @@ app.use ( cors ())
 //API
 app.use ( '/api', routes);
 
-
+//ERROR API:
+app.use ( errorHandler)
 //LAUNCHING SERVER
 app.listen ( process.env.APP_PORT, () => {
     console.log ( 'Server listening on port ' + process.env.APP_PORT );

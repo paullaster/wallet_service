@@ -1,14 +1,19 @@
 //ACCOUNT CREATION FILE:
 //DEPENDENCIES:
 const bcrypt = require ( 'bcrypt' );
-const createAccount = ( req, res) => {
+const createAccount = ( req, res, next) => {
   const {phonenumber, pin} = req.body;
-  bcrypt.hash (pin, 12)
+  bcrypt.hash ( 12)
   .then ( (hash) => {
-    res.json ({
+    res
+    .status(200)
+    .json ({
         message: phonenumber, hash
-      })
+      });
   })
+  .catch ( (err) => {
+    next (err)
+  });
   
   
 
