@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/paullaster/wallet_service#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
     "jest": "^29.2.2",
     "nodemon": "^2.0.20"
   },
