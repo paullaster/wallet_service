@@ -33,7 +33,7 @@ const knex = require ( 'knex')(option);
 //ESTABLISHING KNEX CONNECTION:
 knex.raw ( "SELECT VERSION()" )
 .then ( ()=> {
-    console.log ('connection succeeded')
+    console.log ('db connection succeeded')
 })
 .catch ( (err) => {
     apiError.InternalServerError (err.message);

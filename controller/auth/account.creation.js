@@ -23,10 +23,12 @@ const createAccount = ( req, res, next) => {
             .json ( {message: 'account already exists'})
         );
     };
-    
-    res
-    .status(200)
-    .json (rows);
+    bcrypt.hash ( pin, 12)
+    .then ( (hashedPin) => {
+        res
+        .status (200)
+        .json ( {phonenumber, hashedPin, })
+    })
   })
   .catch ( (err) => {
     res.json (err.message)
