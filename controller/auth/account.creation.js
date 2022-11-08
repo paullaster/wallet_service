@@ -46,7 +46,9 @@ const createAccount = ( req, res, next) => {
             //.finally ( () => knex.destroy ());
     })
     .catch ( (err) => {
-        apiError.InternalServerError (err.message)
+        res
+        .status (500)
+        .json ( err.message);
     })
   })
   .catch ( (err) => {
