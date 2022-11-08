@@ -15,9 +15,9 @@ const login = ( req, res) => {
             });
             return;
         };
-        res
-        .status (200)
-        .json ( rows);
+        // res
+        // .status (200)
+        // .json ( rows);
     })
 };
 //EXPORT LOGIN:
