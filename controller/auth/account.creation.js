@@ -2,14 +2,13 @@
 //DEPENDENCIES:
 const bcrypt = require ( 'bcrypt' );
 
-
 //INTERNAL DEPENDENCIES:
 const knex = require ( '../../helper/database.connection');
-const apiError = require ( '../../middleware/errors/errorHandler');
+//const apiError = require ( '../../middleware/errors/errorHandler');
 
 const createAccount = ( req, res, next) => {
   const {phonenumber, pin} = req.body;
-
+ 
   //CHECKING IF ACCOUNT ALREADY EXISTS:
   knex('accounts')
   .where ( {

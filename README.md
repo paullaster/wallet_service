@@ -1,5 +1,5 @@
 # wallet_service
-This is a walled service API in NodeJs
+This is a wallet service API in NodeJs
 
 
 # E-R Diagram
