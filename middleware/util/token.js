@@ -9,8 +9,11 @@ const generateToken = (user) => {
     const payLoad = {
         id: user.accountID
     };
-    JWT.sign (payLoad, process.env.TOKEN_SECRET, {
+   return  JWT.sign (payLoad, process.env.TOKEN_SECRET, {
         algorithm: 'HS512',
         expiresIn: 3600
     });
 };
+
+//EXPORT TOKEN FUNCTION:
+module.exports = generateToken;

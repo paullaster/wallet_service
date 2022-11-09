@@ -3,6 +3,8 @@
 const bcrypt = require ( 'bcrypt' );
 //INTERNAL DEPENDENCIES:
 const knex = require ( '../../helper/database.connection');
+const generateToken = require ( '../../middleware/util/token');
+
 const login = ( req, res) => {
     const {phonenumber, pin} = req.body;
     knex ('accounts').where ({accountID: phonenumber})
@@ -24,6 +26,10 @@ const login = ( req, res) => {
                 return;
             };
             
+            const token = generateToken ( rows[0]);
+            req.header ( {
+                Authorization: "Bearer " + token
+            });
 
         })
         .catch ( (error) => {
