@@ -1,5 +1,6 @@
 //DEPENDENCIES:
 const servicesRoute = require ( 'express').Router ();
+const {check} = require ( 'express-validator' );
 
 //INTERNAL DEPENDENCIES:
 const accounts = require ( '../../controller/services/fund.accounts');

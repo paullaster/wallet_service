@@ -12,7 +12,6 @@ const transferFund = (req, res) => {
     knex ('accounts').where ( {accountID: user})
     .then ( (rows) => {
         const {recipientAccount, transferAmount} = req.body;
-
          //Users cannot transfer funds to their own accounts:
          if (rows[0].accountID === recipientAccount) {
             res
@@ -25,6 +24,15 @@ const transferFund = (req, res) => {
         //Finding recipient account details:
         knex ('accounts').where ( {accountID: recipientAccount})
         .then ( (recipient) => {
+            //Checking transfer amount to be int:
+            if ( typeof transferAmount !== 'number') {
+                res
+                .status (403)
+                .json ( {
+                    message: ' Transfer amount must be a number!'
+                });
+                return;
+            };
             //Checking if the user have enough funds to transfer:
             if (transferAmount > rows[0].balance) {
                 res
