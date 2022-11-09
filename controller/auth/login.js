@@ -27,9 +27,14 @@ const login = ( req, res) => {
             };
             
             const token = generateToken ( rows[0]);
-            req.header ( {
-                Authorization: "Bearer " + token
-            });
+            res
+            .status (200)
+            .header ( {
+                'Authorization': 'Bearer ' +token
+            })
+            .json ( {
+                token
+            })
 
         })
         .catch ( (error) => {

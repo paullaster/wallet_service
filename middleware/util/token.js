@@ -11,7 +11,7 @@ const generateToken = (user) => {
     };
    return  JWT.sign (payLoad, process.env.TOKEN_SECRET, {
         algorithm: 'HS512',
-        expiresIn: 3600
+        expiresIn: '3600s'
     });
 };
 
