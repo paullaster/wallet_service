@@ -36,7 +36,7 @@ knex.raw ( "SELECT VERSION()" )
     console.log ('db connection succeeded')
 })
 .catch ( (err) => {
-    apiError.InternalServerError (err.message);
+    console.log (err.message);
 });
 
 //Export knex
