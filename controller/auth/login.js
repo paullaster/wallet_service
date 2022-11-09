@@ -24,7 +24,21 @@ const login = ( req, res) => {
                 return;
             };
         })
+        .catch ( (error) => {
+            res
+            .status (500)
+            .json ( {
+                Error: error.message,
+            });
+        });
     })
+    .catch ( (error) => {
+        res
+        .status (500)
+        .json ( {
+            error: error.message,
+        });
+    });
 };
 //EXPORT LOGIN:
 module.exports = login;
