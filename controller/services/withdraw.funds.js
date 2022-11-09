@@ -41,9 +41,24 @@ const withdrawFund = (req, res) => {
             return;
         };
         //Perfomring withdrawal transaction:
-        const afterWithdrawalBalance = 
-
-        res.json(rows);
+        const afterWithdrawalBalance = rows[0].balance - withdrawalAmount;
+        //Updating DB balance after the transaction:
+        knex ('accounts').where ( {accountID: rows[0].accountID})
+        .update ( {balance: afterWithdrawalBalance})
+        .then ( (data) => {
+            res
+            .status (200)
+            .json ( {
+                message: `${data} ${ data > 1 ? 'items' : 'item'} updated successfully!`,
+            });
+        })
+        .catch ( (error) => {
+            res
+            .status (500)
+            .json ( {
+                error: error.message,
+            });
+        });
     })
     .catch ( (error) => {
         res
