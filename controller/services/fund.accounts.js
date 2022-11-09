@@ -1,7 +1,7 @@
 //FUND ACCOUNTS:
 
 //INTERNAL DEPENDENCIES:
-const knex = require ( '../helper/database.connection');
+const knex = require ( '../../helper/database.connection');
 const accountFunding = (req, res) => {
     const {amount} =req.body;
 
