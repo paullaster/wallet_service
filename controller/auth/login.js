@@ -5,6 +5,7 @@ const bcrypt = require ( 'bcrypt' );
 const knex = require ( '../../helper/database.connection');
 const generateToken = require ( '../../middleware/util/token');
 
+//LOGIN FUNCTION:
 const login = ( req, res) => {
     const {phonenumber, pin} = req.body;
     knex ('accounts').where ({accountID: phonenumber})
@@ -34,8 +35,7 @@ const login = ( req, res) => {
             })
             .json ( {
                 token
-            })
-
+            });
         })
         .catch ( (error) => {
             res
