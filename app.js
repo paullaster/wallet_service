@@ -25,6 +25,7 @@ app.use ( '/api', routes);
 
 //ERROR API:
 app.use ( errorHandler)
+
 //LAUNCHING SERVER
 app.listen ( process.env.APP_PORT, () => {
     console.log ( 'Server listening on port ' + process.env.APP_PORT );
