@@ -28,7 +28,8 @@ const createAccount = ( req, res, next) => {
     });
     return;
   };
-
+ 
+  //Validating PIN:
   if ( pin.length  !== 4){
     res
     .status (403)
@@ -36,7 +37,16 @@ const createAccount = ( req, res, next) => {
       message: ' Pin must be of length 4 characters'
     });
     return;
-  }
+  };
+
+  if ( !(numberRegex.test(pin))){
+    res
+    .status (403)
+    .json ( {
+      mssage: 'Pin must be a numerical string',
+    });
+    return;
+  };
   //CHECKING IF ACCOUNT ALREADY EXISTS:
   knex('accounts')
   .where ( {
