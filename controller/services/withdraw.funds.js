@@ -22,8 +22,26 @@ const withdrawFund = (req, res) => {
             return;
         };
 
+        //Users can not withdraw 0 or less than zero:
+        if ( withdrawalAmount <=  0) {
+            res
+            .status (403)
+            .json ({
+                message: " You can not withdraw 0 or less than zero",
+            });
+            return;
+        };
+        //Users can not withdraw more than their balance:
+        if ( withdrawalAmount > rows[0].balance){
+            res
+            .status (403)
+            .json ({
+                message: "Insufficient funds",
+            });
+            return;
+        };
         //Perfomring withdrawal transaction:
-        
+        const afterWithdrawalBalance = 
 
         res.json(rows);
     })
