@@ -7,12 +7,33 @@ const knex = require ( '../../helper/database.connection');
 //const apiError = require ( '../../middleware/errors/errorHandler');
 
 const createAccount = ( req, res, next) => {
+  const numberRegex = /^\d+$/;
   const {phonenumber, pin} = req.body;
+
+  //checking the string length:
   if (phonenumber.length !== 12) {
     res
     .status (403)
     .json ( {
       message: 'Phonenumber must be of length 12 characters!'
+    });
+    return;
+  }
+  //Checking if the phone number is valid:
+  if ( !(numberRegex.test (phonenumber))){
+    res
+    .status (403)
+    .json ( {
+      message: 'Phonenumber must be a numerical string'
+    });
+    return;
+  };
+
+  if ( pin.length  !== 4){
+    res
+    .status (403)
+    .json ( {
+      message: ' Pin must be of length 4 characters'
     });
     return;
   }
