@@ -2,10 +2,12 @@
 const servicesRoute = require ( 'express').Router ();
 
 //INTERNAL DEPENDENCIES:
-const fundAccounts = require ( '../../controller/services/fund.accounts');
+const accounts = require ( '../../controller/services/fund.accounts');
+const transfer = require ( '../../controller/services/transfer.funds');
 const verifyToken = require ( '../../middleware/util/verifyToken');
 
-servicesRoute.route ( '/fund/accounts').post ( verifyToken, fundAccounts);
+servicesRoute.route ( '/fund/account').post ( verifyToken, accounts);
+servicesRoute.route ( '/fund/transfer').post ( verifyToken, transfer)
 
 //EXPORT Services Route:
 module.exports = servicesRoute;
