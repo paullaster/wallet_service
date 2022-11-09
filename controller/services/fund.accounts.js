@@ -9,7 +9,24 @@ const accountFunding = (req, res) => {
         //Getting old account balance:
         const initialBalance = rows[0].balance;
         const {amount} =req.body;
+        //funding amount can only be a number and must be greater than zero:
+        if ( typeof amount !== 'number') {
+            res
+            .status (403)
+            .json ({
+                message: 'Amount must be a number!'
+            });
+            return;
+        };
 
+        if ( amount <= 0) {
+            res
+            .status (403)
+            .json ( {
+                message: ' Amount must be more than zero!'
+            });
+            return;
+        };
         //setting new account balance
         const newAccountBalance = initialBalance + amount;
         knex ('accounts').where ( {accountID:rows[0].accountID})
