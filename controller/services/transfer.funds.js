@@ -33,6 +33,14 @@ const transferFund = (req, res) => {
                 });
                 return;
             };
+            if (transferAmount <= 0) {
+                res
+                .status (403)
+                .json ( {
+                    message: ' Transfer amount must be more than zero!',
+                });
+                return;
+            };
             //Checking if the user have enough funds to transfer:
             if (transferAmount > rows[0].balance) {
                 res
