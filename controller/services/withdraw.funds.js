@@ -6,6 +6,7 @@
 
 //INTERNAL DEPENDENCIES:
 const knex = require ( '../../helper/database.connection');
+const transactionID = require ( '../../middleware/util/transactionId');
 
 //WITHDRAW FUNDS FUNCTION:
 const withdrawFund = (req, res) => {
@@ -46,11 +47,37 @@ const withdrawFund = (req, res) => {
         knex ('accounts').where ( {accountID: rows[0].accountID})
         .update ( {balance: afterWithdrawalBalance})
         .then ( (data) => {
-            res
-            .status (200)
-            .json ( {
-                message: `${data} ${ data > 1 ? 'items' : 'item'} updated successfully!`,
+            
+            //Record transaction to database:
+            knex ('transactions').insert ( {
+                transID: transactionID (),
+                trans_amount: withdrawalAmount,
+                trans_type: 'Withdrawal',
+                accountID: rows[0].accountID,
+                trans_date: new Date ()
+            })
+            .then ( (data2) => {
+                 res
+                .status (200)
+                .json ( {
+                  message: [
+                    `${data} ${data > 1 ? 'Items' : 'Item'} updated successfully`,
+                    `Transaction recorded successfully`,
+                ],
+               });
+            })
+            .catch ( (error) => {
+                res
+                .status (500)
+                .json ({
+                    error: error.message,
+                });
             });
+            // res
+            // .status (200)
+            // .json ( {
+            //     message: `${data} ${ data > 1 ? 'items' : 'item'} updated successfully!`,
+            // });
         })
         .catch ( (error) => {
             res

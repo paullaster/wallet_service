@@ -57,7 +57,7 @@ const transferFund = (req, res) => {
             knex ('accounts').where ( {accountID: recipient[0].accountID} )
             .update ({balance: recipientBalance})
             .then ( (data) => {
-
+                //Record transaction to database:
                 knex ('transactions').insert ( {
                     transID: transactionID (),
                     trans_amount: transferAmount,
