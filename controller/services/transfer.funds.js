@@ -1,0 +1,10 @@
+//TRANSFER FUNDS:
+//DEPENDENCIES:
+
+//INTERNAL DEPENDENCIES:
+
+//TRANSFER FUNDS FUNCTION:
+const transferFund = () => {};
+
+//EXPORT TRNASFER FUNDS FUNCTION:
+module.exports = transferFund;
