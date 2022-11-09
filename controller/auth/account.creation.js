@@ -8,7 +8,14 @@ const knex = require ( '../../helper/database.connection');
 
 const createAccount = ( req, res, next) => {
   const {phonenumber, pin} = req.body;
- 
+  if (phonenumber.length !== 12) {
+    res
+    .status (403)
+    .json ( {
+      message: 'Phonenumber must be of length 12 characters!'
+    });
+    return;
+  }
   //CHECKING IF ACCOUNT ALREADY EXISTS:
   knex('accounts')
   .where ( {
