@@ -34,6 +34,7 @@ const accountFunding = (req, res) => {
         knex ('accounts').where ( {accountID:rows[0].accountID})
         .update ( {balance:newAccountBalance})
         .then ( (data) => {
+            //Recording transaction:
             knex ('transactions').insert ( {
                 transID: transactionID (),
                 trans_amount: amount,
