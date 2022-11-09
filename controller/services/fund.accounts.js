@@ -2,6 +2,8 @@
 
 //INTERNAL DEPENDENCIES:
 const knex = require ( '../../helper/database.connection');
+const transactionID = require ( '../../middleware/util/transactionId');
+//
 const accountFunding = (req, res) => {
     const user = req.user.id;
     knex('accounts').where ({accountID: user})
@@ -32,10 +34,29 @@ const accountFunding = (req, res) => {
         knex ('accounts').where ( {accountID:rows[0].accountID})
         .update ( {balance:newAccountBalance})
         .then ( (data) => {
-            res
-            .status (201)
-            .json ( {
-                message: `${data} ${data > 1 ? 'Items' : 'Item'} updated successfully`,
+            knex ('transactions').insert ( {
+                transID: transactionID (),
+                trans_amount: amount,
+                trans_type: 'Deposit',
+                accountID: rows[0].accountID,
+                trans_date: new Date ()
+            })
+            .then ( (data2) => {
+                 res
+                .status (200)
+                .json ( {
+                  message: [
+                    `${data} ${data > 1 ? 'Items' : 'Item'} updated successfully`,
+                    `Transaction recorded successfully`,
+                ],
+               });
+            })
+            .catch ( (error) => {
+                res
+                .status (500)
+                .json ({
+                    error: error.message,
+                });
             });
         })
         .catch ( (error) => {
