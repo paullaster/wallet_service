@@ -7,14 +7,20 @@ A user provides a 12 digit phonenumber which well be used as account number
 and a 4 digit pin to create an account. The account creation details or records
 are stored or recorded in the database.
 
+http://paullaster-lendsqr-be-test.citclubmmu.co.ke/api/auth/register
+
 ### Authorization
 A user must be logged in to perform any transaction:
 A user login with a phonenumber and pin.
 
+http://paullaster-lendsqr-be-test.citclubmmu.co.ke/api/auth/login
+
 ### Funding Account
 An authorized user can fund their accounts, deposit,.
 A user enters the amount they wish to deposit and that's the scope of this MVP.
-Users can not make a deposit of Zero and below
+Users can not make a deposit of Zero and below.
+
+http://paullaster-lendsqr-be-test.citclubmmu.co.ke/api/services/fund/deposit
 
 ### Funds Transfer
 An authorized user can transfer funds from their accounts to an exisiting account.
@@ -23,11 +29,14 @@ A user can not transfer funds less than one.
 A user can not transfer more than their current balance
 A transfer transaction affects two tables automatically.
 
+http://paullaster-lendsqr-be-test.citclubmmu.co.ke/api/services/fund/transfer
+
 ### Withdraw Funds
 An authorized user can withdraw funds from their accounts,
 Users can not withdraw amounts less than 1
 Users can not withdraw amount greater than their current balance
 
+http://paullaster-lendsqr-be-test.citclubmmu.co.ke/api/services/fund/withdraw
 
 ## E-R Diagram
 <img src="./public/assets/ERD.png">
@@ -84,3 +93,7 @@ To run this application, run the following command;
 
 ### Run test scripts in development environment
 `npm test`
+
+## Live application link:
+
+http://paullaster-lendsqr-be-test.citclubmmu.co.ke/
