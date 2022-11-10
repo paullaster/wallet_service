@@ -43,10 +43,34 @@ recorded in the users table of the wallet database.
 
 
 ## Postman Collection
-This is a postman collection to the wallet service APIs, includes, 
-`account creation api`.
-`login to account api`.
-`fund account, deposit, api`.
-`transfer funds api`.
-`withdraw funds api`.
+This is a postman collection to the wallet service APIs, includes;
+
+`account creation api`
+
+`login to account api`
+
+`fund account, deposit, api`
+
+`transfer funds api`
+
+`withdraw funds api`
+
+
 <a href="https://web.postman.co/workspace/My-Workspace~e801e857-de9e-4c42-8191-af1848cd4384/collection/12642333-f04f782e-4996-440c-8a50-bccd48eb4455?action=share&creator=12642333" target=_blank > Postman collection </a>
+
+
+Getting this application on your server:
+Clone this repository using the following command;
+```git clone https://github.com/paullaster/wallet_service.git```
+
+## Running the application
+To run this application, run the following command;
+
+### Start the application in development environment
+`npm run dev`
+
+### Run the application in production environment
+`npm start`
+
+### Run test scripts in development environment
+`npm test`
