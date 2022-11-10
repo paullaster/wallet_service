@@ -61,7 +61,16 @@ This is a postman collection to the wallet service APIs, includes;
 
 Getting this application on your server:
 Clone this repository using the following command;
+
 ```git clone https://github.com/paullaster/wallet_service.git```
+
+After cloning the wallet service APIs application, you will need to run the following command;
+
+``` npm install ```
+This command will install all the npm packages listed as dependencies and deveDependencies in the ```package.json``` file.
+
+After installing all the npm dependencies, you will need to create a configuration file,
+```.env ``` with same same name as in the  ```.env.examples``` file with your own values.
 
 ## Running the application
 To run this application, run the following command;
