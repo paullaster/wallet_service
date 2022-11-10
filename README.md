@@ -1,5 +1,6 @@
 # Wallet Service
-This is a wallet service API in NodeJs
+This is a wallet services API in NodeJs
+Throug the wallet services API, the following services are available:
 
 ## Account creation
 A user provides a 12 digit phonenumber which well be used as account number 
