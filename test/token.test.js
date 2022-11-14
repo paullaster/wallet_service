@@ -3,8 +3,8 @@ const JWT = require ( 'jsonwebtoken');
 require ('dotenv').config ();
 
 test ('generateToken', () => {
-    expect( token(user.id)).toBe(
-        JWT.sign ( user.id, process.env.TOKEN_SECRET, 
+    expect( token(254700258098)).toBe(
+        JWT.sign ( 254700258098, process.env.TOKEN_SECRET, 
             { 
                 algorithm: 'HS512',
                 expiresIn: '3600s'
