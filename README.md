@@ -65,7 +65,7 @@ This is a postman collection to the wallet service APIs, includes;
 `withdraw funds api`
 
 
-<a href="https://web.postman.co/workspace/My-Workspace~e801e857-de9e-4c42-8191-af1848cd4384/collection/12642333-f04f782e-4996-440c-8a50-bccd48eb4455?action=share&creator=12642333" target=_blank > Postman collection </a>
+<a href="https://www.postman.com/paullaster-haurweengs/workspace/team-workspace/collection/12642333-f04f782e-4996-440c-8a50-bccd48eb4455?action=share&creator=12642333" target=_blank > Postman collection </a>
 
 
 Getting this application on your server:
